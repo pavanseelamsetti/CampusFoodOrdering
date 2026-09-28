@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <span class="badge">
+            🍴 CAMPUS FOOD
+        </span>
+
+        <h1>
+            Good Food.<br>
+            Zero Queue.
+        </h1>
+
+        <p>
+            Order your favourite campus food online
+            and pick it up when it's ready.
+        </p>
+
+        <a href="#menu" class="main-button">
+            Explore Menu →
+        </a>
+
+    </div>
+
+    <div class="hero-food">
+        🍔
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="search-section">
+
+    <form action="/" method="GET">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="🔎 Search biryani, burger, pizza..."
+            value="{{ search }}"
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section id="menu">
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>
+                What are you craving?
+            </h2>
+
+            <p>
+                Fresh food available on campus
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="categories">
+
+        {% for category in categories %}
+
+        <a
+            href="/?category={{ category }}"
+            class="category {% if selected == category %}active{% endif %}"
+        >
+
+            {{ category }}
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- FOOD CARDS -->
+
+    <div class="food-grid">
+
+        {% for food in foods %}
+
+        <div class="food-card">
+
+            <div class="food-image">
+
+                {{ food.emoji }}
+
+            </div>
+
+
+            <div class="food-content">
+
+                <h3>
+                    {{ food.name }}
+                </h3>
+
+                <div class="rating">
+
+                    ⭐ {{ food.rating }}
+
+                    <span>
+                        • {{ food.category }}
+                    </span>
+
+                </div>
+
+                <p>
+                    {{ food.desc }}
+                </p>
+
+
+                <div class="food-bottom">
+
+                    <strong>
+                        ₹{{ food.price }}
+                    </strong>
+
+
+                    <form
+                        method="POST"
+                        action="/add/{{ food.id }}"
+                    >
+
+                        <button class="add-button">
+
+                            + Add
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="no-food">
+
+            😔
+
+            <h3>
+                No food found
+            </h3>
+
+            <p>
+                Try another search.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- SPECIAL OFFER -->
+
+<section class="offer">
+
+    <div>
+
+        <h2>
+            🎁 Campus Special
+        </h2>
+
+        <p>
+            Get ₹20 OFF on orders above ₹200
+        </p>
+
+    </div>
+
+
+    <a href="/cart" class="offer-button">
+
+        View Cart 🛒
+
+    </a>
+
+</section>
+
+{% endblock %}
