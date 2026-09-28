@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Your Cart 🛒</h1>
+    <p>Review your food before checkout.</p>
+</div>
+
+{% if items %}
+
+<div class="cart-layout">
+
+    <div class="cart-box">
+
+        <h2>Selected Items</h2>
+
+        <form method="POST" action="/cart/update">
+
+            {% for item in items %}
+
+            <div class="cart-item">
+
+                <div class="cart-food">
+                    {{ item.emoji }}
+                </div>
+
+                <div class="cart-details">
+
+                    <h3>{{ item.name }}</h3>
+
+                    <p>
+                        ₹{{ item.price }} each
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <input
+                        class="quantity"
+                        type="number"
+                        name="quantity_{{ item.id }}"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        max="20"
+                    >
+
+                </div>
+
+                <strong class="cart-price">
+                    ₹{{ item.subtotal }}
+                </strong>
+
+            </div>
+
+            {% endfor %}
+
+            <button
+                type="submit"
+                class="update-button">
+
+                🔄 Update Cart
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="summary-box">
+
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+
+            <span>Subtotal</span>
+
+            <strong>
+                ₹{{ total }}
+            </strong>
+
+        </div>
+
+        <div class="summary-row discount">
+
+            <span>🎁 Campus Offer</span>
+
+            <strong>
+                - ₹{{ discount }}
+            </strong>
+
+        </div>
+
+        <hr>
+
+        <div class="summary-total">
+
+            <span>Total</span>
+
+            <strong>
+                ₹{{ final_total }}
+            </strong>
+
+        </div>
+
+        <a
+            href="/checkout"
+            class="checkout-button">
+
+            Proceed to Checkout →
+
+        </a>
+
+        <form
+            method="POST"
+            action="/cart/clear">
+
+            <button
+                type="submit"
+                class="clear-button">
+
+                Clear Cart
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<div class="empty-cart">
+
+    <div class="empty-icon">
+        🛒
+    </div>
+
+    <h2>Your cart is empty</h2>
+
+    <p>
+        You haven't added any food yet.
+    </p>
+
+    <a
+        href="/"
+        class="main-button">
+
+        Browse Food 🍔
+
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
