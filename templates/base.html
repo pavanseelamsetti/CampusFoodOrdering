@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Campus Bites</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                Campus<span>Bites</span> 🍔
+            </a>
+
+            <nav>
+
+                <a href="/">Home</a>
+
+                <a href="/?category=Meals">
+                    Menu
+                </a>
+
+                <a href="/track">
+                    Track Order
+                </a>
+
+                <a href="/admin">
+                    Admin
+                </a>
+
+                <a href="/cart" class="cart-button">
+                    🛒 Cart
+                    {% if cart_count %}
+                        ({{ cart_count }})
+                    {% endif %}
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>Campus Bites 🍔</h3>
+
+        <p>
+            Campus Food Ordering System
+        </p>
+
+        <p>
+            © 2026 Campus Bites
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
