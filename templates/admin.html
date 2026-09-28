@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>Canteen Control Center 👨‍🍳</h1>
+
+    <p>
+        Manage today's food orders and menu.
+    </p>
+
+</div>
+
+
+<!-- DASHBOARD STATS -->
+
+<div class="admin-stats">
+
+    <div class="stat-card">
+        <span>🆕 New Orders</span>
+        <strong>08</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>🍳 Preparing</span>
+        <strong>05</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>🟢 Ready</span>
+        <strong>03</strong>
+    </div>
+
+    <div class="stat-card">
+        <span>✅ Completed</span>
+        <strong>42</strong>
+    </div>
+
+</div>
+
+
+<!-- ADMIN CONTENT -->
+
+<div class="admin-layout">
+
+
+    <!-- LIVE ORDERS -->
+
+    <div class="admin-box">
+
+        <h2>
+            🔴 Live Orders
+        </h2>
+
+
+        <div class="admin-order">
+
+            <div>
+
+                <h3>
+                    #CB1025
+                </h3>
+
+                <p>
+                    🍔 Veg Burger × 2
+                </p>
+
+                <p>
+                    🥤 Cold Coffee × 1
+                </p>
+
+                <span class="order-status">
+                    Preparing
+                </span>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    ₹200
+                </strong>
+
+                <br><br>
+
+                <button class="ready-button">
+                    ✓ Mark Ready
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-order">
+
+            <div>
+
+                <h3>
+                    #CB1026
+                </h3>
+
+                <p>
+                    🍛 Chicken Biryani × 1
+                </p>
+
+                <span class="new-status">
+                    New Order
+                </span>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    ₹140
+                </strong>
+
+                <br><br>
+
+                <button class="accept-button">
+                    Accept Order
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-order">
+
+            <div>
+
+                <h3>
+                    #CB1027
+                </h3>
+
+                <p>
+                    🍕 Veg Pizza × 1
+                </p>
+
+                <span class="ready-status">
+                    Ready
+                </span>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    ₹120
+                </strong>
+
+                <br><br>
+
+                <button class="ready-button">
+                    ✓ Completed
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU MANAGEMENT -->
+
+    <div class="admin-box">
+
+        <h2>
+            🍔 Menu Management
+        </h2>
+
+
+        <div class="menu-admin-item">
+
+            <span>
+                🍔 Veg Burger
+            </span>
+
+            <strong>
+                ₹80
+            </strong>
+
+            <button>
+                Edit
+            </button>
+
+        </div>
+
+
+        <div class="menu-admin-item">
+
+            <span>
+                🍛 Chicken Biryani
+            </span>
+
+            <strong>
+                ₹140
+            </strong>
+
+            <button>
+                Edit
+            </button>
+
+        </div>
+
+
+        <div class="menu-admin-item">
+
+            <span>
+                🍕 Veg Pizza
+            </span>
+
+            <strong>
+                ₹120
+            </strong>
+
+            <button>
+                Edit
+            </button>
+
+        </div>
+
+
+        <div class="menu-admin-item">
+
+            <span>
+                🥤 Cold Coffee
+            </span>
+
+            <strong>
+                ₹60
+            </strong>
+
+            <button>
+                Edit
+            </button>
+
+        </div>
+
+
+        <button class="add-food-button">
+            + Add New Food Item
+        </button>
+
+    </div>
+
+</div>
+
+{% endblock %}
