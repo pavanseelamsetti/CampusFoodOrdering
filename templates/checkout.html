@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>Checkout 🚀</h1>
+
+    <p>
+        Just one more step to get your food!
+    </p>
+
+</div>
+
+
+<div class="checkout-layout">
+
+    <!-- CUSTOMER DETAILS -->
+
+    <div class="checkout-box">
+
+        <h2>📍 Pickup Details</h2>
+
+        <form method="POST">
+
+            <div class="form-group">
+
+                <label>
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    name="student_name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    College / Student ID
+                </label>
+
+                <input
+                    type="text"
+                    name="student_id"
+                    placeholder="Enter your student ID"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Pickup Location
+                </label>
+
+                <select name="pickup_location">
+
+                    <option>
+                        Main Canteen Counter
+                    </option>
+
+                    <option>
+                        Block B Café
+                    </option>
+
+                    <option>
+                        Hostel Canteen
+                    </option>
+
+                    <option>
+                        Food Court
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select name="payment_method">
+
+                    <option>
+                        UPI / Google Pay
+                    </option>
+
+                    <option>
+                        Credit / Debit Card
+                    </option>
+
+                    <option>
+                        Cash at Counter
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Special Instructions
+                </label>
+
+                <textarea
+                    name="note"
+                    placeholder="Example: Less spicy, no onions..."
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="place-order-button">
+
+                🚀 Place Order
+
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ORDER SUMMARY -->
+
+    <div class="checkout-summary">
+
+        <h2>
+            🛒 Your Order
+        </h2>
+
+
+        {% for item in items %}
+
+        <div class="checkout-item">
+
+            <div class="checkout-food">
+
+                <span class="checkout-emoji">
+                    {{ item.emoji }}
+                </span>
+
+                <div>
+
+                    <strong>
+                        {{ item.name }}
+                    </strong>
+
+                    <small>
+                        × {{ item.quantity }}
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <strong>
+                ₹{{ item.subtotal }}
+            </strong>
+
+        </div>
+
+        {% endfor %}
+
+
+        <hr>
+
+
+        <div class="summary-row">
+
+            <span>
+                Subtotal
+            </span>
+
+            <strong>
+                ₹{{ total }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-row discount">
+
+            <span>
+                🎁 Campus Discount
+            </span>
+
+            <strong>
+                - ₹{{ discount }}
+            </strong>
+
+        </div>
+
+
+        <div class="final-total">
+
+            <span>
+                Total Payable
+            </span>
+
+            <strong>
+                ₹{{ final_total }}
+            </strong>
+
+        </div>
+
+
+        <div class="secure-payment">
+
+            🔒 Secure & Simple Checkout
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
