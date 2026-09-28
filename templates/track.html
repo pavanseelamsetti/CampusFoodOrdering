@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="tracking-page">
+
+    <div class="success-icon">
+        🎉
+    </div>
+
+    <h1>Order Confirmed!</h1>
+
+    <p class="tracking-subtitle">
+        Your delicious food is being prepared.
+    </p>
+
+    <div class="order-number">
+        Order ID:
+        <strong>#{{ order["order_id"] }}</strong>
+    </div>
+
+
+    <!-- ORDER STATUS -->
+
+    <div class="tracking-box">
+
+        <h2>📦 Order Status</h2>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+
+        <div class="tracking-steps">
+
+            <div class="tracking-step completed">
+
+                <div class="step-circle">
+                    ✓
+                </div>
+
+                <strong>Placed</strong>
+
+                <small>
+                    Order received
+                </small>
+
+            </div>
+
+
+            <div class="tracking-step completed">
+
+                <div class="step-circle">
+                    ✓
+                </div>
+
+                <strong>Accepted</strong>
+
+                <small>
+                    Canteen accepted
+                </small>
+
+            </div>
+
+
+            <div class="tracking-step active">
+
+                <div class="step-circle">
+                    🍳
+                </div>
+
+                <strong>Preparing</strong>
+
+                <small>
+                    Cooking now
+                </small>
+
+            </div>
+
+
+            <div class="tracking-step">
+
+                <div class="step-circle">
+                    4
+                </div>
+
+                <strong>Ready</strong>
+
+                <small>
+                    Pickup time
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ETA -->
+
+    <div class="eta-box">
+
+        <div class="eta-icon">
+            ⏱️
+        </div>
+
+        <div>
+
+            <h3>
+                Ready in about 5 minutes
+            </h3>
+
+            <p>
+                Please collect your order from
+                <strong>Main Canteen Counter</strong>.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ORDER DETAILS -->
+
+    <div class="tracking-order">
+
+        <h2>
+            🛒 Your Order
+        </h2>
+
+
+        {% for item in order["items"] %}
+
+        <div class="order-item">
+
+            <span class="order-emoji">
+                {{ item.emoji }}
+            </span>
+
+            <div>
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+                <p>
+                    Quantity: {{ item["quantity"] }}
+                </p>
+
+            </div>
+
+            <strong>
+                ₹{{ item["subtotal"] }}
+            </strong>
+
+        </div>
+
+        {% endfor %}
+
+
+        <div class="order-total">
+
+            Total Paid
+
+            <strong>
+                ₹{{ order["total"] }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="/"
+        class="main-button">
+
+        🍔 Order More Food
+
+    </a>
+
+</div>
+
+{% endblock %}
